@@ -9,10 +9,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
+    title: "Mark's Personal Blog",
     author: {
-      name: 'Kyle Mathews',
-      summary: 'who lives and works in San Francisco building useful things.'
+      name: "Mark O'Dowd",
+      summary: 'is a Software Engineer from N.Ireland.'
     },
     description: 'A starter blog demonstrating what Gatsby can do.',
     siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
@@ -21,6 +21,7 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-filesystem',
@@ -51,8 +52,7 @@ module.exports = {
             options: {
               wrapperStyle: 'margin-bottom: 1.0725rem'
             }
-          },
-          'gatsby-remark-prismjs'
+          }
         ]
       }
     },
@@ -76,7 +76,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,

@@ -32,14 +32,14 @@ const Bio: FC = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className='bio'>
+    <div className='bg-blue-500'>
       <StaticImage
-        className='bio-avatar'
+        className='rounded-full'
         layout='fixed'
         formats={['auto', 'webp', 'avif']}
         src='../images/profile-pic.png'
-        width={50}
-        height={50}
+        width={100}
+        height={100}
         quality={95}
         alt='Profile picture'
       />

@@ -4,9 +4,36 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
+import type { FC } from 'react'
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || 'Title'
+interface AllMarkdownRemarkNode {
+  excerpt: string
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    date: string
+    title: string
+    description: string
+  }
+}
+
+interface Props {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    allMarkdownRemark: {
+      nodes: AllMarkdownRemarkNode[]
+    }
+  }
+  location: Location
+}
+
+const BlogIndex: FC<Props> = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title ?? 'Title'
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
@@ -26,8 +53,8 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Bio />
       <ol style={{ listStyle: 'none' }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+        {posts.map((post) => {
+          const title = post.frontmatter.title ?? post.fields.slug
 
           return (
             <li key={post.fields.slug}>
@@ -47,7 +74,7 @@ const BlogIndex = ({ data, location }) => {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt
+                      __html: post.frontmatter.description ?? post.excerpt
                     }}
                     itemProp='description'
                   />
