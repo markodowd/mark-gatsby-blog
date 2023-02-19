@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import type { FC, ReactNode } from 'react'
-import Footer from './Footer'
+import Footer from 'components/Footer'
 
 interface Props {
   location: Location
@@ -30,7 +30,7 @@ const Layout: FC<Props> = ({ location, title, children }) => {
 
   return (
     <div
-      className='flex flex-col justify-between h-screen bg-blue-900'
+      className='flex flex-col justify-between h-screen bg-blue-900 text-white'
       data-is-root-path={isRootPath}
     >
       <div className='flex flex-col'>
