@@ -1,11 +1,11 @@
 // If you don't want to use TypeScript you can delete this file!
-import * as React from "react"
-import { PageProps, Link, graphql, HeadFC } from "gatsby"
+import * as React from 'react'
+import { PageProps, Link, graphql, HeadFC } from 'gatsby'
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from '../components/layout'
+import Seo from '../components/seo'
 
-type DataProps = {
+interface DataProps {
   site: {
     buildTime: string
   }
@@ -14,9 +14,9 @@ type DataProps = {
 const UsingTypescript: React.FC<PageProps<DataProps>> = ({
   data,
   path,
-  location,
+  location
 }) => (
-  <Layout title="Using TypeScript" location={location}>
+  <Layout title='Using TypeScript' location={location}>
     <h1>Gatsby supports TypeScript by default!</h1>
     <p>
       This means that you can create and write <code>.ts/.tsx</code> files for
@@ -28,21 +28,21 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
       run <em>tsc --init</em> to create a <em>tsconfig</em> file.
     </p>
     <p>
-      You're currently on the page "{path}" which was built on{" "}
+      You're currently on the page "{path}" which was built on{' '}
       {data.site.buildTime}.
     </p>
     <p>
-      To learn more, head over to our{" "}
-      <a href="https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/">
+      To learn more, head over to our{' '}
+      <a href='https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/'>
         documentation about TypeScript
       </a>
       .
     </p>
-    <Link to="/">Go back to the homepage</Link>
+    <Link to='/'>Go back to the homepage</Link>
   </Layout>
 )
 
-export const Head: HeadFC<DataProps> = () => <Seo title="Using TypeScript" />
+export const Head: HeadFC<DataProps> = () => <Seo title='Using TypeScript' />
 
 export default UsingTypescript
 
